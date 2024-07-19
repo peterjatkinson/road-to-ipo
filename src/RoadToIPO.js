@@ -48,7 +48,7 @@ const RoadToIPO = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-8 bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg shadow-lg">
+    <div className="w-full max-w-none mx-auto p-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg shadow-lg">
       <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">The Road to the IPO</h1>
       <div className="relative mb-4">
         {/* Road - now with aria-hidden */}
