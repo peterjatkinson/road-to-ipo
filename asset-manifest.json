@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/road-to-ipo/static/css/main.a96d1caf.css",
+    "main.js": "/road-to-ipo/static/js/main.6d921ea4.js",
+    "static/js/453.66493423.chunk.js": "/road-to-ipo/static/js/453.66493423.chunk.js",
+    "index.html": "/road-to-ipo/index.html",
+    "main.a96d1caf.css.map": "/road-to-ipo/static/css/main.a96d1caf.css.map",
+    "main.6d921ea4.js.map": "/road-to-ipo/static/js/main.6d921ea4.js.map",
+    "453.66493423.chunk.js.map": "/road-to-ipo/static/js/453.66493423.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a96d1caf.css",
+    "static/js/main.6d921ea4.js"
+  ]
+}
