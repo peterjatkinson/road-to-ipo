@@ -41,7 +41,7 @@ const phases = [
 ];
 
 const RoadToIPO = () => {
-  const [activePhase, setActivePhase] = useState(null);
+  const [activePhase, setActivePhase] = useState(0);  // Start with Phase 1 active
 
   const getStartingStepNumber = (phaseIndex) => {
     return phases.slice(0, phaseIndex).reduce((sum, phase) => sum + phase.steps.length, 0) + 1;
@@ -51,7 +51,7 @@ const RoadToIPO = () => {
     <div className="w-full max-w-none mx-auto p-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg shadow-lg">
       <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">The Road to the IPO</h1>
       <div className="relative mb-4">
-        {/* Road - now with aria-hidden */}
+        {/* Road */}
         <div className="absolute top-8 left-0 right-0 h-4 bg-gray-300 rounded-full" aria-hidden="true">
           <div className="absolute top-1/2 left-0 right-0 h-0.5 transform -translate-y-1/2"
                style={{backgroundImage: 'linear-gradient(to right, white 50%, transparent 50%)', backgroundSize: '20px 100%', backgroundRepeat: 'repeat-x'}}></div>
@@ -69,7 +69,7 @@ const RoadToIPO = () => {
               className={`flex flex-col items-center w-1/3 pt-2 pb-4 px-2 rounded-lg transition-all duration-300 ${
                 activePhase === index ? `${phase.bgColor} shadow-md` : 'bg-transparent'
               } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-${phase.color.split('-')[1]}-400`}
-              onClick={() => setActivePhase(activePhase === index ? null : index)}
+              onClick={() => setActivePhase(index)}
             >
               <div className={`w-16 h-16 rounded-full ${phase.bgColor} ${phase.color} flex items-center justify-center shadow-lg mb-2`} aria-hidden="true">
                 <phase.icon size={32} />
@@ -82,30 +82,26 @@ const RoadToIPO = () => {
       </div>
 
       {/* Phase Details */}
-      {phases.map((phase, index) => (
+      <div className="mt-4 p-6 rounded-lg shadow-md bg-white">
         <div
-          key={index}
           role="tabpanel"
-          id={`phase-${index}-content`}
-          aria-labelledby={`phase-${index}-tab`}
-          hidden={activePhase !== index}
-          className={`mt-2 p-6 rounded-lg shadow-md ${phase.bgColor}`}
+          id={`phase-${activePhase}-content`}
+          aria-labelledby={`phase-${activePhase}-tab`}
         >
-          <h2 className={`text-xl font-semibold mb-4 ${phase.color}`}>
-            {phase.title}
+          <h2 className={`text-xl font-semibold mb-4 ${phases[activePhase].color}`}>
+            {phases[activePhase].title}
           </h2>
-          <ol start={getStartingStepNumber(index)} className="list-decimal list-outside ml-6">
-            {phase.steps.map((step, stepIndex) => (
+          <ol start={getStartingStepNumber(activePhase)} className="list-decimal list-outside ml-6">
+            {phases[activePhase].steps.map((step, stepIndex) => (
               <li key={stepIndex} className="mb-2 text-gray-700 pl-2">
                 {step}
               </li>
             ))}
           </ol>
         </div>
-      ))}
+      </div>
     </div>
   );
 };
 
 export default RoadToIPO;
-
